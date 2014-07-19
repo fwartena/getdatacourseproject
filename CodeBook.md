@@ -15,7 +15,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 Variables and observations in the tidy data set
 -----------------------------------------------
 
-Each row is an observation and the row names consist of the subject number (1-30) "Subject#" concatenated with the activity that the subject performed. The activities are:  
+Each row is an observation, there are 180 rows each with a subject (1-30) and activity (1-6) combination. The activities are:  
  -  Walking  
  -  WalkingUpstairs  
  -  WalkingDownstairs  
@@ -25,7 +25,7 @@ Each row is an observation and the row names consist of the subject number (1-30
  
 For each of these subject-activity combinations the average was calculated for each feature based on all the samples that were available for each combination. Each feature was already normalized in the raw data set to be between -1 and 1. Which means that after taking the average every feature still is in the range -1 to 1. Because of the normalization to the range -1 to 1 these features do not have specific units.  
 
-The tidy data set contains the following features as columns:  
+The tidy data set contains the following 68 columns:  
 
 1. TimeDomainBodyAccelerationMeanX                              
 2. TimeDomainBodyAccelerationMeanY                              
@@ -93,5 +93,7 @@ The tidy data set contains the following features as columns:
 64. FrequencyDomainBodyGyroMagnitudeStandardDeviation            
 65. FrequencyDomainBodyGyroJerkMagnitudeMean                     
 66. FrequencyDomainBodyGyroJerkMagnitudeStandardDeviation
+67. Subject
+68. Activity
 
 More details about the features can be found in the file "/UCI HAR Dataset/features_info.txt" in the raw data set.  

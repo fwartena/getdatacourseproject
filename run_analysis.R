@@ -10,8 +10,14 @@ download.file(fileUrl, "./getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip")
 # unzip the zip file with the raw data
 unzip("./getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip")
 
-# load the activity labels
+# load the activity labels and make them more readable
 activitylabels <- read.table("./UCI HAR Dataset/activity_labels.txt", as.is = TRUE)
+activitylabels$V2 <- gsub("WALKING$", "Walking", activitylabels$V2)
+activitylabels$V2 <- gsub("WALKING_UPSTAIRS", "WalkingUpstairs", activitylabels$V2)
+activitylabels$V2 <- gsub("WALKING_DOWNSTAIRS", "WalkingDownstairs", activitylabels$V2)
+activitylabels$V2 <- gsub("SITTING", "Sitting", activitylabels$V2)
+activitylabels$V2 <- gsub("STANDING", "Standing", activitylabels$V2)
+activitylabels$V2 <- gsub("LAYING", "Laying", activitylabels$V2)
 
 # turn the activity labels into a factor variable that has the right order (1-6)
 activitylabels$V2 <- factor(activitylabels$V2, levels = activitylabels$V2)
@@ -70,17 +76,15 @@ result <- sapply(splitteddataset, colMeans)
 # observations as rows
 tidydata <- data.frame(t(result))
 
-# Create more readable row names
-rownames <- row.names(tidydata)
-rownames <- gsub("(.*)", "Subject\\1", rownames)
-rownames <- gsub("WALKING$", "Walking", rownames)
-rownames <- gsub("WALKING_UPSTAIRS", "WalkingUpstairs", rownames)
-rownames <- gsub("WALKING_DOWNSTAIRS", "WalkingDownstairs", rownames)
-rownames <- gsub("SITTING", "Sitting", rownames)
-rownames <- gsub("STANDING", "Standing", rownames)
-rownames <- gsub("LAYING", "Laying", rownames)
-rownames <- gsub("\\.", "", rownames)
-row.names(tidydata) <- rownames
+# add the subject number and activity labels back as columns in the data
+tidydata$Subject <- as.numeric(gsub("([a-zA-Z._]*)", "", row.names(tidydata)))
+tidydata$Activity <- gsub("[0-9]+\\.", "", row.names(tidydata))
+
+# convert the activities again into factors
+tidydata$Activity <- factor(tidydata$Activity, levels = activitylabels$V2)
+
+# delete the row names
+row.names(tidydata) <- NULL
 
 # save the tidy dataset to file
 write.table(tidydata, "./tidydata.txt")

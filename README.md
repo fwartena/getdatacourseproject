@@ -28,7 +28,7 @@ Steps in the run_analysis.R code
 These are the key steps in the run_analysis.R code:  
 1.  Download the zip file with the raw data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip and store it in the working directory (make sure the working directory in R is set to the location of the run_analysis.R file).  
 2.  Unzip the zip file with the raw data in the working directory.  
-3.  Load the activity labels from the file "/UCI HAR Dataset/activity_labels.txt"  
+3.  Load the activity labels from the file "/UCI HAR Dataset/activity_labels.txt" and make them more readable by using CamelCase (using an upper case letter for each word in the activity name)  
 4.  Turn the activity labels into a factor variable that has the right order so they can later be used to create descriptive activity names for the data set.  
 5.  Load the feature labels from the file "/UCI HAR Dataset/features.txt"  
 6.  Remove the duplicates in the feature labels, by applying make.unique.  
@@ -49,7 +49,7 @@ These are the key steps in the run_analysis.R code:
 15. Split the dataset by subject and activity, which creates 180 sets of subject (30) and activity (6) combinations.  
 16. Calculate the average for each of the selected features for each  subject-activity combination, this results in a data set of 180 columns (one for each subject-activity combination) and 66 rows (66 mean and std features).  
 17. To create a tidy data set where each row is one observation (which I interpret as a subject-activity combination), the result needs to be transposed to switch rows and columns. I've also transformed the resulting data set into a data.frame.  
-18. Create more readable row names by using "Subject#" instead of just the subject "#". I've also changed the activity descriptions to CamelCase to create consistency with the names of the features.  
+18. Add the Subject and Activity columns in the tidy data set by taking them from the row names that were created by splitting and sapply. After the Subject and Activity columns have been add the row names can be deleted.  
 19. Write the tidy data set to file by using write.table.  
 
 The tidy data set, which has been uploaded as part of the course project submission can be loaded into R using the following command:  
