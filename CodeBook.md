@@ -65,15 +65,15 @@ For each of these subject-activity combinations the average was calculated for e
 
 The tidy data set contains the following features as columns:  
 
- 1. TimeDomainBodyAccelerationMeanX                              
- 2. TimeDomainBodyAccelerationMeanY                              
- 3. TimeDomainBodyAccelerationMeanZ                              
- 4. TimeDomainBodyAccelerationStandardDeviationX                 
- 5. TimeDomainBodyAccelerationStandardDeviationY                 
- 6. TimeDomainBodyAccelerationStandardDeviationZ                 
- 7. TimeDomainGravityAccelerationMeanX                           
- 8. TimeDomainGravityAccelerationMeanY                           
- 9. TimeDomainGravityAccelerationMeanZ                           
+1. TimeDomainBodyAccelerationMeanX                              
+2. TimeDomainBodyAccelerationMeanY                              
+3. TimeDomainBodyAccelerationMeanZ                              
+4. TimeDomainBodyAccelerationStandardDeviationX                 
+5. TimeDomainBodyAccelerationStandardDeviationY                 
+6. TimeDomainBodyAccelerationStandardDeviationZ                 
+7. TimeDomainGravityAccelerationMeanX                           
+8. TimeDomainGravityAccelerationMeanY                           
+9. TimeDomainGravityAccelerationMeanZ                           
 10. TimeDomainGravityAccelerationStandardDeviationX              
 11. TimeDomainGravityAccelerationStandardDeviationY              
 12. TimeDomainGravityAccelerationStandardDeviationZ              
